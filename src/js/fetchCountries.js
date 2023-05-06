@@ -5,5 +5,10 @@ export function fetchCountries(symbol) {
 
   const url = BASE_URL + END_POINT + PARAMS;
 
-  return fetch(url).then(res => res.json());
+  return fetch(url).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
 }

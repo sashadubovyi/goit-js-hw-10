@@ -24,10 +24,10 @@ export function renderCountryList(data) {
   const markup = data
     .map(({ name, flags }) => {
       return `
-      <span class="countryCardName">
+      <li class="countryCardName">
         <img class="imgFlag" src="${flags.svg}" alt="${flags.alt}" width="25px" height="20px">
         <p class="country">${name.official}</p>
-      </span>
+      </li>
     `;
     })
     .join('');
