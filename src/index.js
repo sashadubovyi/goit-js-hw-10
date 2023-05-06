@@ -13,10 +13,14 @@ refs.input.addEventListener(
   debounce(evt => {
     const searchCountrys = evt.target.value.trim();
 
+    if (!searchCountrys) {
+      refs.countryList.innerHTML = '';
+      refs.countryInfo.innerHTML = '';
+      return;
+    }
+
     fetchCountries(searchCountrys)
       .then(data => {
-        console.log(data);
-
         if (data.length > 10) {
           Notiflix.Notify.info(
             'Too many matches found. Please enter a more specific name.'
